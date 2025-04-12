@@ -1,0 +1,32 @@
+# Dataset configuration
+dataset:
+  data_dir: "../data"
+  image_size: 256
+  batch_size: 8
+  num_workers: 4
+
+# Model configuration
+model:
+  in_channels: 3
+  num_features: 64
+  num_groups: 3
+  num_blocks: 20
+
+# Training configuration
+training:
+  num_epochs: 100
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  adam_betas: [0.9, 0.999]
+  sgd_momentum: 0.9
+  optimizer_switch_epoch: 50  # Switch from Adam to SGD after this epoch
+  edge_loss_weight: 0.05      # Weight of edge loss in total loss
+  clip_gradient: 0.5          # Gradient clipping value
+  save_interval: 5            # Save model every N epochs
+  early_stopping_patience: 10 # Stop training if validation loss doesn't improve for N epochs
+
+# Paths
+paths:
+  checkpoints_dir: "../experiments/weights"
+  logs_dir: "../experiments/logs"
+  results_dir: "../results"
